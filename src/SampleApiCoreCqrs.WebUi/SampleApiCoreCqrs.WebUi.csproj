@@ -22,5 +22,8 @@
     <ProjectReference Include="..\SampleApiCoreCqrs.Application\SampleApiCoreCqrs.Application.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\SampleApiCoreCqrs.Infrastructure\SampleApiCoreCqrs.Infrastructure.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>
