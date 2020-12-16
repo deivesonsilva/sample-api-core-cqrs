@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -81,6 +80,16 @@ namespace SampleApiCoreCqrs.WebUi.Helpers
                         new List<string>()
                     }
                 });
+            });
+        }
+
+        public static void RegisterLogging(this IServiceCollection services)
+        {
+            services.AddLogging(configure =>
+            {
+                configure.ClearProviders();
+                configure.AddConsole();
+                configure.AddDebug();
             });
         }
     }

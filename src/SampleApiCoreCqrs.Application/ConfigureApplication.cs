@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SampleApiCoreCqrs.Application.Behaviours;
 using SampleApiCoreCqrs.Application.Common.Model;
 
 namespace SampleApiCoreCqrs.Application
@@ -10,9 +13,9 @@ namespace SampleApiCoreCqrs.Application
         {
             services.Configure<TokenConfiguration>(x => configuration.GetSection("TokenConfiguration").Bind(x));
 
-
-
-            
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
         }
     }
 }

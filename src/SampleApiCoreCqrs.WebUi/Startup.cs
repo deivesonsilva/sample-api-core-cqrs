@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SampleApiCoreCqrs.Application;
+using SampleApiCoreCqrs.Application.Common.Interfaces;
+using SampleApiCoreCqrs.Application.Common.Services;
 using SampleApiCoreCqrs.Infrastructure;
 using SampleApiCoreCqrs.WebUi.Helpers;
 
@@ -20,7 +22,9 @@ namespace SampleApiCoreCqrs.WebUi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddHttpContextAccessor();
+            services.RegisterLogging();
             services.AddCors();
             services.AddControllers();
 
