@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
@@ -33,12 +33,12 @@ namespace SampleApiCoreCqrs.Application.Behaviours
 
             if (elapsedMilliseconds > 500)
             {
-                string requestName = typeof(TRequest).Name;
+                string commandName = typeof(TRequest).Name;
                 string accountId = _currentUserService.AccountId.ToString() ?? string.Empty;
-                string accountName = _currentUserService.FirstName.ToString() ?? string.Empty;
+                string commandValue = JsonSerializer.Serialize(request);
 
-                _logger.LogWarning("SampleApi Long Running Request => {Name}: ({ElapsedMilliseconds} milliseconds) - {UserName} ({UserId}) - {Request}",
-                    requestName, elapsedMilliseconds, accountName, accountId, request);
+                _logger.LogWarning("[SampleApi]-[Log Performance] : {accountId} - Long Running {ElapsedMilliseconds} milliseconds - {command} => {requestValue}",
+                    accountId, elapsedMilliseconds, commandName, commandValue);
             }
             return response;
         }

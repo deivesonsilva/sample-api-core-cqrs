@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
@@ -21,12 +22,12 @@ namespace SampleApiCoreCqrs.Application.Behaviours
 
         public async Task Process(TRequest request, CancellationToken cancellationToken)
         {
-            string requestName = typeof(TRequest).Name;
+            string commandName = typeof(TRequest).Name;
             string accountId = _currentUserService.AccountId.ToString() ?? string.Empty;
-            string accountName = _currentUserService.FirstName ?? string.Empty;
+            string commandValue = JsonSerializer.Serialize(request);
 
-            _logger.LogInformation("SampleApi Request => {Name}: {accountName} ({accountId}) - {Request}",
-                requestName, accountName, accountId, request);
+            _logger.LogInformation("[SampleApi]-[Log Request] : {accountId} - {command} => {requestValue}",
+                accountId, commandName, commandValue);
         }
     }
 }
