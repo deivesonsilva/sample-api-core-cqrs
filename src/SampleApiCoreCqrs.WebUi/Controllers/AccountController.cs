@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SampleApiCoreCqrs.Application.Commands.AccountCommand.Register;
+using SampleApiCoreCqrs.Application.Common.Library;
 using SampleApiCoreCqrs.WebUi.Helpers;
 
 namespace SampleApiCoreCqrs.WebUi.Controllers
@@ -11,10 +12,10 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
         [HttpPost]
         [Route("register")]
         [AllowAnonymous]
-        public async Task<string> Register(RegisterAccountCommand command)
+        public async Task<ActionResult> Register(RegisterAccountCommand command)
         {
             var res = await Mediator.Send(command);
-            return res;
+            return GetActionResult((Response)res);
         }
     }
 }

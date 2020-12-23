@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using SampleApiCoreCqrs.Application.Common.Interfaces;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
 {
-    public class RegisterAccountCommand : IRequest<string>
+    public class RegisterAccountCommand : IRequest<IResponse>
     {
         public string FirstName { get; set; }
         public string SecondName { get; set; }

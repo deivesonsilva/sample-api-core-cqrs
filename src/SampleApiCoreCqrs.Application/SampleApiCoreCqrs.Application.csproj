@@ -18,6 +18,8 @@
     <Folder Include="Commands\" />
     <Folder Include="Commands\AccountCommand\" />
     <Folder Include="Commands\AccountCommand\Register\" />
+    <Folder Include="Common\Enums\" />
+    <Folder Include="Common\Model\ResponseModel\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
