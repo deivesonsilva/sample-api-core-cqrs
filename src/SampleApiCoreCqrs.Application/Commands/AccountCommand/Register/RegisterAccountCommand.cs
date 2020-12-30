@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using SampleApiCoreCqrs.Application.Common.Enums;
 using SampleApiCoreCqrs.Application.Common.Interfaces;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
@@ -9,6 +10,6 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
         public string SecondName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int Type { get; set; }
+        public AccountType Type { get; set; }
     }
 }

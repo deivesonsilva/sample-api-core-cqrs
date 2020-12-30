@@ -46,7 +46,8 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
                 Email = request.Email,
                 Password = request.Password,
                 VerifyCode = verifyCode.GenerateMd5(),
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                Type = (int)request.Type
             };
 
             await _accountRepository.CreateAsync(account);

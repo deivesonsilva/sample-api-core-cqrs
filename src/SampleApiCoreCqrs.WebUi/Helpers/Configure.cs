@@ -14,7 +14,6 @@ namespace SampleApiCoreCqrs.WebUi.Helpers
     {
         public static void RegisterAuthentication(this IServiceCollection services)
         {
-            //var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -27,7 +26,6 @@ namespace SampleApiCoreCqrs.WebUi.Helpers
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    //IssuerSigningKey = new SymmetricSecurityKey(key),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
@@ -90,6 +88,14 @@ namespace SampleApiCoreCqrs.WebUi.Helpers
                 configure.ClearProviders();
                 configure.AddConsole();
                 configure.AddDebug();
+            });
+        }
+
+        public static void RegisterFilter(this IServiceCollection services)
+        {
+            services.AddControllers(config =>
+            {
+                config.Filters.Add(typeof(ApiExceptionFilter));
             });
         }
     }

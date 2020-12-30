@@ -28,11 +28,14 @@ namespace SampleApiCoreCqrs.WebUi
             services.AddCors();
             services.AddControllers();
 
+            services.RegisterFilter();
             services.RegisterAuthentication();
             services.RegisterSwagger();
             services.RegisterInfrastructure(Configuration);
             services.RegisterApplication(Configuration);
 
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
