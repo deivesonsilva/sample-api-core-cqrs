@@ -12,6 +12,19 @@
     <Folder Include="Common\" />
     <Folder Include="Common\Library\" />
     <Folder Include="Common\Model\" />
+    <Folder Include="Behaviours\" />
+    <Folder Include="Common\Interfaces\" />
+    <Folder Include="Common\Services\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Commands\AccountCommand\" />
+    <Folder Include="Commands\AccountCommand\Register\" />
+    <Folder Include="Common\Enums\" />
+    <Folder Include="Common\Model\ResponseModel\" />
+    <Folder Include="Commands\AccountCommand\Signin\" />
+    <Folder Include="Commands\AccountCommand\VerifyCode\" />
+    <Folder Include="Commands\AccountCommand\ResetPassword\" />
+    <Folder Include="Commands\AccountCommand\ChangePassword\" />
+    <Folder Include="Common\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
@@ -19,5 +32,13 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SampleApiCoreCqrs.Infrastructure\SampleApiCoreCqrs.Infrastructure.csproj" />
   </ItemGroup>
 </Project>
