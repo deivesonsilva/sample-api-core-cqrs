@@ -20,6 +20,7 @@
     <Folder Include="Commands\AccountCommand\Register\" />
     <Folder Include="Common\Enums\" />
     <Folder Include="Common\Model\ResponseModel\" />
+    <Folder Include="Commands\AccountCommand\Signin\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
