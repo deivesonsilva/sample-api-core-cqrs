@@ -44,30 +44,6 @@ namespace SampleApiCoreCqrs.Application.Common.Library
                 }
             };
         }
-
-        //public static IResponse<TValue> Ok<TValue>(TValue value)
-        //{
-        //    return new Response<TValue>
-        //    {
-        //        Type = ResponseType.OkObject,
-        //        Value = value
-        //    };
-        //}
-
-        //public static IResponse<TValue> Bad<TValue>(string message)
-        //{
-        //    return new Response<TValue>
-        //    {
-        //        Type = ResponseType.Bad,
-        //        Value = default(TValue),
-        //        Error = new ResponseError
-        //        {
-        //            Message = message,
-        //            Value = null
-        //        }
-        //    };
-        //}
-
     }
 
     public class Response<TValue> : Response, IResponse<TValue>

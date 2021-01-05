@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentValidation;
+using SampleApiCoreCqrs.Application.Common.Validators;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Signin
 {
@@ -9,19 +10,14 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Signin
         {
             RuleFor(v => v.Email)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Email)
+                .NotEmpty().WithMessage("Campo obrigatório")
                 .EmailAddress()
                 .WithMessage("E-mail inválido");
 
             RuleFor(v => v.Password)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Password)
-                .MinimumLength(6)
-                .WithMessage("A senha deve ter no mínimo 6 caracteres");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
         }
     }
 }

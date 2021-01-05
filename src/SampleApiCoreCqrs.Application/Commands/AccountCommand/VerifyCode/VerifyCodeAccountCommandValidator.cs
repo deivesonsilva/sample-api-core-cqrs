@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SampleApiCoreCqrs.Application.Common.Validators;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.VerifyCode
 {
@@ -8,19 +9,19 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.VerifyCode
         {
             RuleFor(v => v.Email)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Email)
+                .NotEmpty().WithMessage("Campo obrigatório")
                 .EmailAddress()
                 .WithMessage("E-mail inválido");
 
             RuleFor(v => v.Password)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
 
             RuleFor(v => v.Code)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
         }
     }
 }

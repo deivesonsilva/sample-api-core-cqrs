@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SampleApiCoreCqrs.Application.Common.Validators;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
 {
@@ -16,25 +17,18 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.Register
 
             RuleFor(v => v.Email)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Email)
+                .NotEmpty().WithMessage("Campo obrigatório")
                 .EmailAddress()
                 .WithMessage("E-mail inválido");
 
             RuleFor(v => v.Password)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Password)
-                .MinimumLength(6)
-                .WithMessage("A senha deve ter no mínimo 6 caracteres");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
 
             RuleFor(v => v.Type)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Type)
+                .NotEmpty().WithMessage("Campo obrigatório")
                 .IsInEnum()
                 .WithMessage("Tipo inválido");
         }

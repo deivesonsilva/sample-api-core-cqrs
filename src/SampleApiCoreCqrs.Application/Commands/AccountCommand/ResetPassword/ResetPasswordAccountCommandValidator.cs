@@ -8,11 +8,8 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.ResetPassword
         {
             RuleFor(v => v.Email)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
-
-            RuleFor(v => v.Email)
-                .EmailAddress()
-                .WithMessage("E-mail inválido");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .EmailAddress().WithMessage("E-mail inválido");
         }
     }
 }

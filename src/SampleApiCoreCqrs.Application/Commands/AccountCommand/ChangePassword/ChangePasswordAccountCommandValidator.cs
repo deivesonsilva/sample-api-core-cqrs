@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using SampleApiCoreCqrs.Application.Common.Validators;
 
 namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.ChangePassword
 {
@@ -16,11 +17,13 @@ namespace SampleApiCoreCqrs.Application.Commands.AccountCommand.ChangePassword
 
             RuleFor(v => v.ResetPassword)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
 
             RuleFor(v => v.NewPassword)
                 .NotNull()
-                .NotEmpty().WithMessage("Campo obrigatório");
+                .NotEmpty().WithMessage("Campo obrigatório")
+                .SetValidator(new Md5Validator()).WithMessage("Utilize criptografia MD5");
         }
     }
 }

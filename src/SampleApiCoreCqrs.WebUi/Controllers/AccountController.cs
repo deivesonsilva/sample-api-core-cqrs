@@ -13,6 +13,9 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
 {
     public class AccountController : ApiController
     {
+        /// <summary>
+        /// Used to create a new account for user and admin. Send a verify code to the email
+        /// </summary>
         [HttpPost]
         [Route("register")]
         [AllowAnonymous]
@@ -22,6 +25,9 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
             return GetActionResult((Response)res);
         }
 
+        /// <summary>
+        /// Used to signin, return a new token
+        /// </summary>
         [HttpPost]
         [Route("signin")]
         [AllowAnonymous]
@@ -31,6 +37,9 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
             return GetActionResult((Response<SigninAccountDto>)res);
         }
 
+        /// <summary>
+        /// Used to verify code when you use "register"
+        /// </summary>
         [HttpPost]
         [Route("verifycode")]
         [AllowAnonymous]
@@ -40,6 +49,9 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
             return GetActionResult((Response<VerifyCodeAccountDto>)res);
         }
 
+        /// <summary>
+        /// Used to recorver the password. Send a temporary password to the email
+        /// </summary>
         [HttpPost]
         [Route("resetpassword")]
         [AllowAnonymous]
@@ -49,6 +61,9 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
             return GetActionResult((Response)res);
         }
 
+        /// <summary>
+        /// Used to create the new password when you use "resetpassword"
+        /// </summary>
         [HttpPost]
         [Route("changepassword")]
         [AllowAnonymous]

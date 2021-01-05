@@ -2,7 +2,6 @@
 using System.Net;
 using System.Net.Mail;
 using System.Text;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SampleApiCoreCqrs.Application.Common.Interfaces;
 using SampleApiCoreCqrs.Application.Common.Model;
@@ -66,7 +65,7 @@ namespace SampleApiCoreCqrs.Application.Common.Services
                 StringBuilder body = new StringBuilder();
                 body.AppendLine(string.Format("{0},", entity.FirstName));
                 body.AppendLine(string.Format("<p>Utilize o código <b>{0}</b> como senha temporaria, em seguida será solicitado uma nova senha.</p>", resetPassword));
-                body.AppendLine("-&nbsp;SampleApi&nbsp;-");
+                body.AppendLine("-&nbsp; SampleApi &nbsp;-");
 
                 MailMessage message = new MailMessage();
                 message.Sender = new MailAddress(_config.Value.Email);
