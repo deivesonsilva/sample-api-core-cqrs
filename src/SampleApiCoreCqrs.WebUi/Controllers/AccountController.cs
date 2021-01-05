@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SampleApiCoreCqrs.Application.Commands.AccountCommand.Register;
 using SampleApiCoreCqrs.Application.Commands.AccountCommand.Signin;
+using SampleApiCoreCqrs.Application.Commands.AccountCommand.VerifyCode;
 using SampleApiCoreCqrs.Application.Common.Library;
 using SampleApiCoreCqrs.WebUi.Helpers;
 
@@ -26,6 +27,15 @@ namespace SampleApiCoreCqrs.WebUi.Controllers
         {
             var res = await Mediator.Send(command);
             return GetActionResult((Response<SigninAccountDto>)res);
+        }
+
+        [HttpPost]
+        [Route("verifycode")]
+        [AllowAnonymous]
+        public async Task<ActionResult<VerifyCodeAccountDto>> VerifyCode(VerifyCodeAccountCommand command)
+        {
+            var res = await Mediator.Send(command);
+            return GetActionResult((Response<VerifyCodeAccountDto>)res);
         }
     }
 }
