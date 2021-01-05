@@ -22,6 +22,8 @@
     <Folder Include="Common\Model\ResponseModel\" />
     <Folder Include="Commands\AccountCommand\Signin\" />
     <Folder Include="Commands\AccountCommand\VerifyCode\" />
+    <Folder Include="Commands\AccountCommand\ResetPassword\" />
+    <Folder Include="Commands\AccountCommand\ChangePassword\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
